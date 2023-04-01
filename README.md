@@ -10,7 +10,7 @@ Oh, and it writes the value to PNGinfo and supports XYZ Plot.
 
 ## Usage
 
-After installing, you can find the new slider called "Negative Prompt Weight" in the scripts sectionm under NPW. 
+After installing, you can find the new slider called "Negative Prompt Weight" in the scripts section under NPW. 
 
 ![Screenshot of the slider provided by the extension in UI](/assets/scr.png "Does what it says on the box.")
 
