@@ -1,7 +1,7 @@
 
 # Negative Prompt Weight
 
-This is a simple extension for the [Stable Diffusion Web UI](https://github.com/AUTOMATIC1111/stable-diffusion-webui), which adds provides a weight parameter for the negative prompt.
+This is a simple extension for the [Stable Diffusion Web UI](https://github.com/AUTOMATIC1111/stable-diffusion-webui), which provides a weight parameter for the negative prompt.
 
 ![Another example plot showing the effect of different weights](/assets/example1.jpg)
 *Negative Prompt: Male*
