@@ -28,7 +28,7 @@ At runtime a new learned conditioning `empty_uncond` is made from an empty promp
 
 ## Comparisons and Stuff
 
-Here are some comparisons of NPW with attention/emphasis. So top row is NPW and ottom row is using the (Negative Prompt: 0), (Negative Prompt: 0.25), etc. syntax.
+Here are some comparisons between NPW and Attention/Emphasis. So top row is using NPW and bottom row is using the (Negative Prompt: weight) syntax with the same weights.
 
 ```Prompts: a close up portrait of a cyberpunk [knight|lobster], [lobster| ] armour, cyberpunk!, fantasy, elegant, digital painting, artstation, concept art, matte, sharp focus, art by josan gonzalez```
 
