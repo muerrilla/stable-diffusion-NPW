@@ -22,7 +22,8 @@ Oh, and it writes the value to PNGinfo, honors it during 'send to txt2img' etc.,
 
 ## Limitations
 
-Right now if you have a negative prompt that's longer than 75 tokens, it will not work and throws a bunch of (non-critical) errors at every step instead. Working on getting it fixed.
+<strike>Right now if you have a negative prompt that's longer than 75 tokens, it will not work and throws a bunch of (non-critical) errors at every step instead. Working on getting it fixed.</strike><br>
+Update: Fixed.
 
 ## Usage
 
