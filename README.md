@@ -14,7 +14,7 @@ This is a simple extension for the [Stable Diffusion Web UI](https://github.com/
 *Params: Steps: 30, Sampler: DPM++ SDE Karras, CFG scale: 7.5, Seed: 918, Size: 512x640, Model: deliberate_v2* <br>
 *Negative Prompt: Female*
 
-Here is the first example compared to using the (negative prompts: weight) syntax:
+Here is the first example compared to using the '(negative prompts: weight)' syntax (i.e. bottom row is (negative prompt:0),(negative prompt:0.25),etc.:
 
 ![portrait of zimby anton fadeev cyborg propaganda poster-24-male](https://user-images.githubusercontent.com/48160881/229344713-81793753-d9ae-4927-b5e9-03a7749dfc95.jpg)
 
