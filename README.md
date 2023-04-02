@@ -36,14 +36,14 @@ Here are some comparisons of NPW with attention/emphasis. So top row is NPW and 
 
 
 ![a close up portrait of a cyberpunk knight-2-red](https://user-images.githubusercontent.com/48160881/229320416-c805642e-168d-4d35-a4c8-a1f0b066a982.jpg)
-```Negative Prompt: red```
+*Negative Prompt: red*
 
 
 
 ![a close up portrait of a cyberpunk knight-25-samurai pink cg](https://user-images.githubusercontent.com/48160881/229320590-1beaf1ac-5ede-49ad-b2bd-7e761fdd49df.jpg)
-```Negative Prompt: samurai pink cg```
+*Negative Prompt: samurai pink cg*
 
 
 
 ![a close up portrait of a cyberpunk knight-42](https://user-images.githubusercontent.com/48160881/229321419-055bd6ad-2931-4ad1-96d2-69b047ea1c97.jpg)
-```Negative Prompt: *custom TI embedding*```
+*Negative Prompt: *custom TI embedding**
