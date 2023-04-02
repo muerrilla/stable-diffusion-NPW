@@ -1,7 +1,7 @@
 
 # Negative Prompt Weight
 
-This is a simple extension for the [Stable Diffusion Web UI](https://github.com/AUTOMATIC1111/stable-diffusion-webui), which allows users to adjust the weight parameter for the negative prompt.
+This is a simple extension for the [Stable Diffusion Web UI](https://github.com/AUTOMATIC1111/stable-diffusion-webui), which allows users to adjust the weight parameter for the negative prompt. Please have a look at the discussion [here](https://github.com/AUTOMATIC1111/stable-diffusion-webui/issues/9220) if you need more context.
 
 
 ![Another example plot showing the effect of different weights](/assets/example1.jpg)
@@ -14,11 +14,15 @@ This is a simple extension for the [Stable Diffusion Web UI](https://github.com/
 *Params: Steps: 30, Sampler: DPM++ SDE Karras, CFG scale: 7.5, Seed: 918, Size: 512x640, Model: deliberate_v2* <br>
 *Negative Prompt: Female*
 
-Here is the first example compared to using the (negative prompts: weight) syntax:
+Here is the first example compared to using the '(negative prompts: weight)' syntax (i.e. bottom row is (negative prompt:0),(negative prompt:0.25),etc.:
 
 ![portrait of zimby anton fadeev cyborg propaganda poster-24-male](https://user-images.githubusercontent.com/48160881/229344713-81793753-d9ae-4927-b5e9-03a7749dfc95.jpg)
 
-Oh, and it writes the value to PNGinfo and supports XYZ Plot.
+Oh, and it writes the value to PNGinfo, honors it during 'send to txt2img' etc., and supports XYZ Plot.
+
+## Limitations
+
+Right now if you have a negative prompt that's longer than 75 tokens, it will not work and throws a bunch of (non-critical) errors at every step instead. Working on getting it fixed.
 
 ## Usage
 
