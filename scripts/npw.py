@@ -59,7 +59,14 @@ class Script(scripts.Script):
 
     def denoiser_callback(self, params):
         uncond = params.text_uncond
-        new_uncond = torch.lerp(self.empty_uncond, uncond, self.weight)
+
+        if uncond.shape[1] > self.empty_uncond.shape[1]:
+            num_concatenations = uncond.shape[1] // self.empty_uncond.shape[1]
+            empty_uncond_concat = torch.cat([self.empty_uncond] * num_concatenations, dim=1)
+            new_uncond = torch.lerp(empty_uncond_concat, uncond, self.weight)
+        else:
+            new_uncond = torch.lerp(self.empty_uncond, uncond, self.weight)
+            
         params.text_uncond = new_uncond
 
     def make_empty_uncond(self):
