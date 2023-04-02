@@ -20,6 +20,10 @@ Here is the first example compared to using the '(negative prompts: weight)' syn
 
 Oh, and it writes the value to PNGinfo, honors it during 'send to txt2img' etc., and supports XYZ Plot.
 
+## Limitations
+
+Right now if you have a negative prompt that's longer than 75 tokens, it will not work and throws a bunch of (non-critical) errors at every step instead. Working on getting it fixed.
+
 ## Usage
 
 After installing, you can locate the new slider called "Negative Prompt Weight" in the scripts section under NPW. 
