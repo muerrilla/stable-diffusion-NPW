@@ -18,7 +18,7 @@ Here is the first example compared to using the '(negative prompts: weight)' syn
 
 ![portrait of zimby anton fadeev cyborg propaganda poster-24-male](https://user-images.githubusercontent.com/48160881/229344713-81793753-d9ae-4927-b5e9-03a7749dfc95.jpg)
 
-Oh, and it writes the value to PNGinfo and supports XYZ Plot.
+Oh, and it writes the value to PNGinfo, honors it during 'send to txt2img' etc., and supports XYZ Plot.
 
 ## Usage
 
