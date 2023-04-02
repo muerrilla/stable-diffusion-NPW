@@ -3,11 +3,20 @@
 
 This is a simple extension for the [Stable Diffusion Web UI](https://github.com/AUTOMATIC1111/stable-diffusion-webui), which allows users to adjust the weight parameter for the negative prompt.
 
+
 ![Another example plot showing the effect of different weights](/assets/example1.jpg)
+*Prompt: portrait of zimby anton fadeev cyborg propaganda poster*<br>
+*Params: Steps: 30, Sampler: DPM++ SDE Karras, CFG scale: 7.5, Seed: 918, Size: 512x640, Model: deliberate_v2* <br>
 *Negative Prompt: Male*
 
 ![Another example plot showing the effect of different weights](/assets/example2.jpg)
+*Prompt: portrait of zimby anton fadeev cyborg propaganda poster*<br>
+*Params: Steps: 30, Sampler: DPM++ SDE Karras, CFG scale: 7.5, Seed: 918, Size: 512x640, Model: deliberate_v2* <br>
 *Negative Prompt: Female*
+
+Here is the first example compared to using the (negative prompts: weight) syntax:
+
+![portrait of zimby anton fadeev cyborg propaganda poster-24-male](https://user-images.githubusercontent.com/48160881/229344713-81793753-d9ae-4927-b5e9-03a7749dfc95.jpg)
 
 Oh, and it writes the value to PNGinfo and supports XYZ Plot.
 
@@ -26,7 +35,7 @@ For now, clone this repo in your extensions folder, or manually create a folder 
 
 At runtime a new learned conditioning `empty_uncond` is made from an empty prompt. Then at every step, inside the denoiser callback, the scheduled `uncond` of the denoiser (which is based on whatever prompt hijinks were passed to the parser) is lerped with the `empty_uncond`.
 
-## Comparisons and Stuff
+## More Comparisons and Stuff
 
 Here are some comparisons between NPW and Attention/Emphasis. So, top row is using NPW and bottom row is using the (Negative Prompt: weight) syntax with the same weights.
 
