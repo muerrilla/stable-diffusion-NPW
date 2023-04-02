@@ -1,7 +1,7 @@
 
 # Negative Prompt Weight
 
-This is a simple extension for the [Stable Diffusion Web UI](https://github.com/AUTOMATIC1111/stable-diffusion-webui), which provides a weight parameter for the negative prompt.
+This is a simple extension for the [Stable Diffusion Web UI](https://github.com/AUTOMATIC1111/stable-diffusion-webui), which allows users to adjust the weight parameter for the negative prompt.
 
 ![Another example plot showing the effect of different weights](/assets/example1.jpg)
 *Negative Prompt: Male*
@@ -13,7 +13,7 @@ Oh, and it writes the value to PNGinfo and supports XYZ Plot.
 
 ## Usage
 
-After installing, you can find the new slider called "Negative Prompt Weight" in the scripts section under NPW. 
+After installing, you can locate the new slider called "Negative Prompt Weight" in the scripts section under NPW. 
 
 ![Screenshot of the slider provided by the extension in UI](/assets/scr.png "Does what it says on the box.")
 
@@ -28,7 +28,7 @@ At runtime a new learned conditioning `empty_uncond` is made from an empty promp
 
 ## Comparisons and Stuff
 
-Here are some comparisons between NPW and Attention/Emphasis. So top row is using NPW and bottom row is using the (Negative Prompt: weight) syntax with the same weights.
+Here are some comparisons between NPW and Attention/Emphasis. So, top row is using NPW and bottom row is using the (Negative Prompt: weight) syntax with the same weights.
 
 ```Prompts: a close up portrait of a cyberpunk [knight|lobster], [lobster| ] armour, cyberpunk!, fantasy, elegant, digital painting, artstation, concept art, matte, sharp focus, art by josan gonzalez```
 
