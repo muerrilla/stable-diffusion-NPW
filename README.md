@@ -1,7 +1,11 @@
 
 # Negative Prompt Weight
 
-This is a simple extension for the [Stable Diffusion Web UI](https://github.com/AUTOMATIC1111/stable-diffusion-webui), which allows users to adjust the weight parameter for the negative prompt. Please have a look at the discussion [here](https://github.com/AUTOMATIC1111/stable-diffusion-webui/issues/9220) if you need more context.
+This is a simple extension for the [Stable Diffusion Web UI](https://github.com/AUTOMATIC1111/stable-diffusion-webui), which allows users to adjust the overall weight of the negative prompt, allowing you to increase or decrease its effect in a new way. Oh, and it writes the value to PNGinfo, honors it during 'send to txt2img' etc., and supports XYZ Plot.
+
+## What It Does
+
+Here's a demonstration of how it can continously reduce the effect of the negative prompt from what you normally get (on the right, with weight 1.0) to nothing, as if the negative prompt was empty (on the left, with weight 0.0):
 
 
 ![Another example plot showing the effect of different weights](/assets/example1.jpg)
@@ -14,30 +18,28 @@ This is a simple extension for the [Stable Diffusion Web UI](https://github.com/
 *Params: Steps: 30, Sampler: DPM++ SDE Karras, CFG scale: 7.5, Seed: 918, Size: 512x640, Model: deliberate_v2* <br>
 *Negative Prompt: Female*
 
+This method was originally intended for <b>decreasing</b> the effect of the negative prompt, which is very hard or at times impossible to do with the currently available methods like Better Prompting™, Attention/Emphasis (using the '(prompt:weight)' syntax), Prompt Editing (using the [prompt1:prompt2:when] syntax), etc. But you can also use it with values higher than 1 and it will boost your negative prompt in its own style (you might need to lower your CFG scale a bit if you do that).
+
 Here is the first example compared to using the '(negative prompts: weight)' syntax (i.e. bottom row is (negative prompt:0),(negative prompt:0.25),etc.:
 
 ![portrait of zimby anton fadeev cyborg propaganda poster-24-male](https://user-images.githubusercontent.com/48160881/229344713-81793753-d9ae-4927-b5e9-03a7749dfc95.jpg)
 
-Oh, and it writes the value to PNGinfo, honors it during 'send to txt2img' etc., and supports XYZ Plot.
+Please have a look at the examples in the [comparisons](https://github.com/muerrilla/stable-diffusion-NPW#more-comparisons-and-stuff) section if you want to know how it's different from using '(prompt:weight)' and check out the discussion [here](https://github.com/AUTOMATIC1111/stable-diffusion-webui/issues/9220) if you need more context.
 
 ## Limitations
 
-Right now if you have a negative prompt that's longer than 75 tokens, it will not work and throws a bunch of (non-critical) errors at every step instead. Working on getting it fixed.
+<strike>Right now if you have a negative prompt that's longer than 75 tokens, it will not work and throws a bunch of (non-critical) errors at every step instead. Working on getting it fixed.</strike><br>
+Update: Fixed.
+
+## Installation
+
+For now, clone this repo in your extensions folder, or manually create a folder in there and call it what you want, then copy the `scripts` folder of this repo in there.
 
 ## Usage
 
 After installing, you can locate the new slider called "Negative Prompt Weight" in the scripts section under NPW. 
 
 ![Screenshot of the slider provided by the extension in UI](/assets/scr.png "Does what it says on the box.")
-
-
-## Installation
-
-For now, clone this repo in your extensions folder, or manually create a folder in there and call it what you want, then copy the `scripts` folder of this repo in there.
-
-## How It's Done
-
-At runtime a new learned conditioning `empty_uncond` is made from an empty prompt. Then at every step, inside the denoiser callback, the scheduled `uncond` of the denoiser (which is based on whatever prompt hijinks were passed to the parser) is lerped with the `empty_uncond`.
 
 ## More Comparisons and Stuff
 
@@ -60,3 +62,7 @@ Here are some comparisons between NPW and Attention/Emphasis. So, top row is usi
 
 ![a close up portrait of a cyberpunk knight-42](https://user-images.githubusercontent.com/48160881/229321419-055bd6ad-2931-4ad1-96d2-69b047ea1c97.jpg)
 *Negative Prompt: *custom TI embedding**
+
+## How It's Done
+
+At runtime a new learned conditioning tensor `empty_uncond` is made from an empty prompt. Then at every step, inside the denoiser callback, the scheduled `uncond` tensor of the denoiser (which is based on whatever prompt hijinks were passed to the parser) is lerped with the `empty_uncond` to weaken it's effect. The lerp function can instead be given a parameter bigger than 1, and it will boost the effect of the negative prompt like the CFG scale does for the positive.
