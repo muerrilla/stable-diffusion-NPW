@@ -16,24 +16,41 @@ class Script(scripts.Script):
         return scripts.AlwaysVisible
 
     def ui(self, is_img2img):
-        with gr.Accordion("NPW", open=False, elem_id="#npw"):                                              
-            z_weight = gr.Slider(minimum=0, maximum=2.0, step=.01, value=1, label="Negative Prompt Weight")
+        with gr.Accordion("Negative Prompt Weight", open=False, elem_id="npw"):                                              
+            with gr.Row(equal_height=True):
+                with gr.Column(scale=100):
+                    ui_feedback = gr.Checkbox(value=True, interactive=True, label="UI Feedback")
+                with gr.Column(scale=1, min_width=84):
+                    weight_input = gr.Number(value=1.0, precision=3, label="Negative Prompt Weight", show_label=False)            
+
+            dummy = gr.Checkbox(visible=False)  
+            js = """(v, d) => {
+                let t=document.querySelector('#txt2img_negative_token_counter'),
+                    i=document.querySelector('#img2img_negative_token_counter');
+                t.style.cssText+=`outline:4px solid rgba(255,0,128,${d*Math.sqrt(Math.abs(v-1))}); border-radius: 0.4em !important;`
+                i.style.cssText+=`outline:4px solid rgba(255,0,128,${d*Math.sqrt(Math.abs(v-1))}); border-radius: 0.4em !important;`
+                }"""                                      
+            weight_input.change(None, [weight_input, ui_feedback], dummy, _js=js)
+            ui_feedback.change(None, [weight_input, ui_feedback], dummy, _js=js)
 
         self.infotext_fields = []        
         self.infotext_fields.extend([
-            (z_weight, "NPW_weight"),
+            (weight_input, "NPW_weight"),
         ])
         self.paste_field_names = []
         for _, field_name in self.infotext_fields:
             self.paste_field_names.append(field_name)
-        return [z_weight]
+
+        return [weight_input]
     
 
-    def process(self, p, z_weight):    
+    def process(self, p, weight):    
 
-        z_weight = getattr(p, 'NPW_weight', z_weight) 
-        self.weight = z_weight
+        weight = getattr(p, 'NPW_weight', weight) 
+        if weight != 1 : self.print_warning(weight)
+        self.weight = weight
         self.empty_uncond = None      
+        
 
         if hasattr(self, 'callbacks_added'):
             remove_current_script_callbacks()
@@ -73,18 +90,27 @@ class Script(scripts.Script):
         empty_uncond = shared.sd_model.get_learned_conditioning([""])
         return empty_uncond
 
+    def print_warning(self, value):
+        if value == 1:
+            return
+        color_code = '\033[33m'  
+        if value < 0.5 or value > 1.5:
+            color_code = '\033[93m'  
+        print(f"\n{color_code}ATTENTION: Negative prompt weight is set to {value}\033[0m")
+
+
 def xyz_support():
     for scriptDataTuple in scripts.scripts_data:
         if os.path.basename(scriptDataTuple.path) == 'xyz_grid.py':
             xy_grid = scriptDataTuple.module
 
-            z_weight = xy_grid.AxisOption(
+            npw_weight = xy_grid.AxisOption(
                 '[NPW] Weight',
                 float,
                 xy_grid.apply_field('NPW_weight')
             )
             xy_grid.axis_options.extend([
-                z_weight
+                npw_weight
             ])
 try:
     xyz_support()

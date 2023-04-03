@@ -1,0 +1,18 @@
+#npw input::-webkit-outer-spin-button,
+#npw input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+#npw input[type=number] {
+  -moz-appearance: textfield;
+  padding: 4px 12px !important;
+}
+
+#npw .gradio-row {
+  align-items: center;
+}
+
+#npw .gradio-checkbox {
+  margin: 0;
+}
