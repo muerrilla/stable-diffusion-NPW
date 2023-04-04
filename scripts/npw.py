@@ -16,22 +16,27 @@ class Script(scripts.Script):
         return scripts.AlwaysVisible
 
     def ui(self, is_img2img):
-        with gr.Accordion("Negative Prompt Weight", open=False, elem_id="npw"):                                              
+        with gr.Accordion("Negative Prompt Weight", open=True, elem_id="npw"):                                                          
             with gr.Row(equal_height=True):
                 with gr.Column(scale=100):
-                    ui_feedback = gr.Checkbox(value=True, interactive=True, label="UI Feedback")
-                with gr.Column(scale=1, min_width=84):
-                    weight_input = gr.Number(value=1.0, precision=3, label="Negative Prompt Weight", show_label=False)            
+                    weight_input_slider = gr.Slider(minimum=0.00, maximum=2.00, step=.01, value=1.00, label="Negative Prompt Weight ", interactive=True, elem_id="npw-slider")
+                with gr.Column(scale=1, min_width=120):
+                    with gr.Row():
+                        weight_input = gr.Number(value=1.00, precision=4, label="Negative Prompt Weight", show_label=False, elem_id="npw-number")   
+                        reset_but = gr.Button(value='✕', elem_id='npw-x').style(full_width=False, size='sm')               
 
-            dummy = gr.Checkbox(visible=False)  
-            js = """(v, d) => {
+            js = """(v) => {
                 let t=document.querySelector('#txt2img_negative_token_counter'),
                     i=document.querySelector('#img2img_negative_token_counter');
-                t.style.cssText+=`outline:4px solid rgba(255,0,128,${d*Math.sqrt(Math.abs(v-1))}); border-radius: 0.4em !important;`
-                i.style.cssText+=`outline:4px solid rgba(255,0,128,${d*Math.sqrt(Math.abs(v-1))}); border-radius: 0.4em !important;`
-                }"""                                      
-            weight_input.change(None, [weight_input, ui_feedback], dummy, _js=js)
-            ui_feedback.change(None, [weight_input, ui_feedback], dummy, _js=js)
+                t.style.cssText+=`outline:4px solid rgba(255,0,128,${Math.sqrt(Math.abs(v-1))}); border-radius: 0.4em !important;`
+                i.style.cssText+=`outline:4px solid rgba(255,0,128,${Math.sqrt(Math.abs(v-1))}); border-radius: 0.4em !important;`
+                return v;
+                }"""                
+
+            weight_input.change(None, [weight_input], weight_input_slider, _js=js)
+            weight_input_slider.release(None, weight_input_slider, weight_input, _js="(x) => (x).toFixed(2)")
+            reset_but.click(None, [], [weight_input,weight_input_slider], _js="(x) => [(1).toFixed(2),(1).toFixed(2)]")
+
 
         self.infotext_fields = []        
         self.infotext_fields.extend([

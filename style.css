@@ -1,18 +1,33 @@
-#npw input::-webkit-outer-spin-button,
-#npw input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+#npw span {
+  margin-bottom: 0 !important;
+  font-size: var(--section-header-text-size);
+  min-width: fit-content;
 }
 
 #npw input[type=number] {
-  -moz-appearance: textfield;
   padding: 4px 12px !important;
+}
+
+#npw button {
+  min-width: 30px;
+  max-width: 30px;
+  min-height: fit-content;
+  font-weight: var(--button-large-text-weight);
 }
 
 #npw .gradio-row {
   align-items: center;
+  gap: 0.5em;
 }
 
 #npw .gradio-checkbox {
   margin: 0;
+}
+
+#npw .form {
+  min-width: unset;
+}
+
+#npw-slider {
+  padding: 0 10px !important;
 }
