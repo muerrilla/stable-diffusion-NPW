@@ -3,10 +3,17 @@
 
 This is a simple extension for the [Stable Diffusion Web UI](https://github.com/AUTOMATIC1111/stable-diffusion-webui), which allows users to adjust the overall weight of the negative prompt, allowing you to increase or decrease its effect in a new way. Oh, and it writes the value to PNGinfo, honors it during 'send to txt2img' etc., and supports XYZ Plot.
 
-## What It Does
+## Updates
+
+ - **2023-04-04 - Not Even a Slider**: Replaced the slider with a `number` input so any number can be set, cuz then you can do the crazy stuff! It also helps with the responsiveness of the UI feedback because the change/release listeners on the version of gradio that sd-webui uses right now are useless.
+
+- **2023-04-04 - UI Feedback**: I kept leaving NPW on a low value and forgetting about it, then went nuts trying to figure out why my prompts were not working. So I added some UI feedback both in the console (a warning will be printed to console at runtime if NPW is not 1) and in the webUI [(a color outline for the negative prompt token counter)](https://github.com/muerrilla/stable-diffusion-NPW#usage).
+
+- **2023-04-03 - Long Prompts**: Fixed the initial limitation caused by me having forgotten prompts can be longer than 77 tokens.
+
+## What Does It Do?
 
 Here's a demonstration of how it can continously reduce the effect of the negative prompt from what you normally get (on the right, with weight 1.0) to nothing, as if the negative prompt was empty (on the left, with weight 0.0):
-
 
 ![Another example plot showing the effect of different weights](/assets/example1.jpg)
 *Prompt: portrait of zimby anton fadeev cyborg propaganda poster*<br>
@@ -18,6 +25,8 @@ Here's a demonstration of how it can continously reduce the effect of the negati
 *Params: Steps: 30, Sampler: DPM++ SDE Karras, CFG scale: 7.5, Seed: 918, Size: 512x640, Model: deliberate_v2* <br>
 *Negative Prompt: Female*
 
+### Why Use This?
+
 This method was originally intended for <b>decreasing</b> the effect of the negative prompt, which is very hard or at times impossible to do with the currently available methods like Better Prompting™, Attention/Emphasis (using the '(prompt:weight)' syntax), Prompt Editing (using the [prompt1:prompt2:when] syntax), etc. But you can also use it with values higher than 1 and it will boost your negative prompt in its own style (you might need to lower your CFG scale a bit if you do that).
 
 Here is the first example compared to using the '(negative prompts: weight)' syntax (i.e. bottom row is (negative prompt:0),(negative prompt:0.25),etc.:
@@ -26,18 +35,17 @@ Here is the first example compared to using the '(negative prompts: weight)' syn
 
 Please have a look at the examples in the [comparisons](https://github.com/muerrilla/stable-diffusion-NPW#more-comparisons-and-stuff) section if you want to know how it's different from using '(prompt:weight)' and check out the discussion [here](https://github.com/AUTOMATIC1111/stable-diffusion-webui/issues/9220) if you need more context.
 
-## Limitations
-
-<strike>Right now if you have a negative prompt that's longer than 75 tokens, it will not work and throws a bunch of (non-critical) errors at every step instead. Working on getting it fixed.</strike><br>
-Update: Fixed.
-
 ## Installation
 
-For now, clone this repo in your extensions folder, or manually create a folder in there and call it what you want, then copy the `scripts` folder of this repo in there.
+Open SD WebUI > Go to Extensions tab > Go to Available > Press the big button > Find 'Negative Prompt Weight' in the list > Click Install
+
+Or manually clone this repo into your extensions folder:
+
+`git clone "https://github.com/muerrilla/stable-diffusion-NPW" extensions/stable-diffusion-NPW`
 
 ## Usage
 
-After installing, you can locate the new slider called "Negative Prompt Weight" in the scripts section under NPW. 
+After installing, you can locate the new parameter called "Negative Prompt Weight" in the scripts section under NPW. 
 
 ![Screenshot of the slider provided by the extension in UI](/assets/scr.png "Does what it says on the box.")
 
