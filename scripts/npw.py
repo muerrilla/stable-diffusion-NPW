@@ -34,8 +34,8 @@ class Script(scripts.Script):
                 }"""                
 
             weight_input.change(None, [weight_input], weight_input_slider, _js=js)
-            weight_input_slider.release(None, weight_input_slider, weight_input, _js="(x) => (x).toFixed(2)")
-            reset_but.click(None, [], [weight_input,weight_input_slider], _js="(x) => [(1).toFixed(2),(1).toFixed(2)]")
+            weight_input_slider.release(None, weight_input_slider, weight_input, _js="(x) => x")
+            reset_but.click(None, [], [weight_input,weight_input_slider], _js="(x) => [1,1]")
 
 
         self.infotext_fields = []        

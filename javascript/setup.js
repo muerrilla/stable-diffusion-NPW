@@ -11,7 +11,7 @@ function fixInputs() {
   let npwNumber = document.getElementById('npw-number');
   npwNumber = npwNumber.querySelector('input[type="number"]');
   npwNumber.setAttribute("step", "0.01");
-  npwNumber.value = (1).toFixed(2);
+  npwNumber.value = 1;
 
   const newSpan = document.createElement("span");
   newSpan.innerHTML = "Negative Prompt Weight";
