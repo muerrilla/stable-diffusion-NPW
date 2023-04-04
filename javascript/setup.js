@@ -1,29 +1,31 @@
 function setupNPW() {
   fixAccordion();  
-  fixInputs(); 
+  fixInputs();
 }
 
 function fixInputs() {
-  const npwSlider = document.getElementById("npw-slider");
-  const npwSliderHead = npwSlider.querySelector('.head');
-  npwSliderHead.remove(); 
+  const npwSlider_t2i = document.querySelector("#tab_txt2img #npw-slider");
+  const npwSlider_i2i = document.querySelector("#tab_img2img #npw-slider");
 
-  let npwNumber = document.getElementById('npw-number');
-  npwNumber = npwNumber.querySelector('input[type="number"]');
-  npwNumber.setAttribute("step", "0.01");
-  npwNumber.value = 1;
+  npwSlider_t2i.querySelector('.head').remove(); 
+  npwSlider_i2i.querySelector('.head').remove(); 
 
   const newSpan = document.createElement("span");
   newSpan.innerHTML = "Negative Prompt Weight";
-  const ancestor = npwSlider.parentNode.parentNode.parentNode;
-  ancestor.insertBefore(newSpan, ancestor.firstChild);
+  const ancestor_t2i = npwSlider_t2i.parentNode.parentNode.parentNode;
+  ancestor_t2i.insertBefore(newSpan, ancestor_t2i.firstChild);
+  const ancestor_i2i = npwSlider_i2i.parentNode.parentNode.parentNode;
+  ancestor_i2i.insertBefore(newSpan.cloneNode(true), ancestor_i2i.firstChild);
+
+  document.querySelector('#tab_txt2img #npw-number input[type="number"]').setAttribute("step", "0.01");
+  document.querySelector('#tab_img2img #npw-number input[type="number"]').setAttribute("step", "0.01");
 }
 
 function fixAccordion() {
-  const arrow = document.querySelector('#npw .icon');
-  arrow.remove(); 
-  const label = document.querySelector('.open');
-  label.remove(); 
+  document.querySelector('#tab_txt2img #npw .icon').remove();
+  document.querySelector('#tab_img2img #npw .icon').remove();
+  document.querySelector('#tab_txt2img #npw .open').remove();  
+  document.querySelector('#tab_img2img #npw .open').remove();  
 }
 
 onUiLoaded(setupNPW);
