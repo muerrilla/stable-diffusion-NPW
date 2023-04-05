@@ -46,9 +46,11 @@ Or manually clone this repo into your extensions folder:
 
 ## Usage
 
+![Screenshot of the slider provided by the extension in UI](/assets/screenshot.png "Does what it says on the box.")
+
 After installing, you can locate the new parameter "Negative Prompt Weight" in the extentions area of txt2img and img2img tabs. 
 
-![Screenshot of the slider provided by the extension in UI](/assets/screenshot.png "Does what it says on the box.")
+If negative prompt weight is set to anything other than 1, an outline will appear around the negative prompt token counter, as a reminder.
 
 ## More Comparisons and Stuff
 
