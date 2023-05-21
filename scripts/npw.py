@@ -26,10 +26,10 @@ class Script(scripts.Script):
                         reset_but = gr.Button(value='✕', elem_id='npw-x').style(full_width=False, size='sm')               
 
             js = """(v) => {
-              ['#txt2img_negative_token_counter', '#img2img_negative_token_counter'].forEach((selector, index) => {
+              ['#tab_txt2img #npw-x', '#tab_img2img #npw-x'].forEach((selector, index) => {
                 const element = document.querySelector(selector);
                 if (document.querySelector(`#tab_${index ? 'img2img' : 'txt2img'}`).style.display === 'block') {
-                  element.style.cssText += `outline:4px solid rgba(255,0,128,${Math.sqrt(Math.abs(v-1))}); border-radius: 0.4em !important;`;
+                  element.style.cssText += `outline:4px solid rgba(255,186,0,${Math.sqrt(Math.abs(v-1))}); border-radius: 0.4em !important;`;
                 }
               });
               return v;
