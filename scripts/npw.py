@@ -87,6 +87,9 @@ class Script(scripts.Script):
         if uncond.shape[1] > self.empty_uncond.shape[1]:
             num_concatenations = uncond.shape[1] // self.empty_uncond.shape[1]
             empty_uncond_concat = torch.cat([self.empty_uncond] * num_concatenations, dim=1)
+            if uncond.shape[1] == empty_uncond_concat.shape[1] + 1:
+                # assuming it's controlnet's marks!
+                empty_uncond_concat = torch.cat([uncond[:, :1, :], empty_uncond_concat], dim=1)
             new_uncond = torch.lerp(empty_uncond_concat, uncond, self.weight)
         else:
             new_uncond = torch.lerp(self.empty_uncond, uncond, self.weight)
