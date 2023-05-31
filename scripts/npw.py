@@ -19,7 +19,7 @@ class Script(scripts.Script):
         with gr.Accordion("Negative Prompt Weight", open=True, elem_id="npw"):                                                          
             with gr.Row(equal_height=True):
                 with gr.Column(scale=100):
-                    weight_input_slider = gr.Slider(minimum=0.00, maximum=2.00, step=.01, value=1.00, label="Negative Prompt Weight ", interactive=True, elem_id="npw-slider")
+                    weight_input_slider = gr.Slider(minimum=0.00, maximum=2.00, step=.05, value=1.00, label="Weight", interactive=True, elem_id="npw-slider")
                 with gr.Column(scale=1, min_width=120):
                     with gr.Row():
                         weight_input = gr.Number(value=1.00, precision=4, label="Negative Prompt Weight", show_label=False, elem_id="npw-number")   
@@ -36,7 +36,7 @@ class Script(scripts.Script):
             }"""
                
             weight_input.change(None, [weight_input], weight_input_slider, _js=js)
-            weight_input_slider.release(None, weight_input_slider, weight_input, _js="(x) => x")
+            weight_input_slider.change(None, weight_input_slider, weight_input, _js="(x) => x")
             reset_but.click(None, [], [weight_input,weight_input_slider], _js="(x) => [1,1]")
 
 
