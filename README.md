@@ -3,15 +3,6 @@
 
 This is a simple extension for the [Stable Diffusion Web UI](https://github.com/AUTOMATIC1111/stable-diffusion-webui), which allows users to adjust the overall weight of the negative prompt, allowing you to increase or decrease its effect in a new way. Oh, and it writes the value to PNGinfo, honors it during 'send to txt2img' etc., and supports XYZ Plot.
 
-## Updates
- - **2023-04-04 - Better UX**: Brought back the slider, albeit a [special slider](https://github.com/muerrilla/stable-diffusion-NPW#usage), with a custom number input with unlimited range and ~~proper decimal display~~, a reset button, and snappy responses made possible by using Gradio's [custom JS](https://gradio.app/custom-CSS-and-JS/) feature. For this, I had to force the extension's accordion to be always open.
-
- - **2023-04-04 - ~~Not Even a Slider~~**: Replaced the slider with a number input so any number can be set, cuz then you can do the crazy stuff! It also helps with the responsiveness of the UI feedback because the change/release listeners on the version of Gradio that sd-webui uses right now are useless.
-
-- **2023-04-04 - UI Feedback**: I kept leaving NPW on a low value and forgetting about it, then went nuts trying to figure out why my prompts were not working. So I added some UI feedback both in the console (a warning will be printed to console at runtime if NPW is not 1) and in the webUI [(a color outline for the negative prompt token counter)](https://github.com/muerrilla/stable-diffusion-NPW#usage).
-
-- **2023-04-03 - Long Prompts**: Fixed the initial limitation caused by me having forgotten prompts can be longer than 77 tokens.
-
 ## What Does It Do?
 
 Here's a demonstration of how it can continously reduce the effect of the negative prompt from what you normally get (on the right, with weight 1.0) to nothing, as if the negative prompt was empty (on the left, with weight 0.0):
@@ -50,6 +41,9 @@ Or manually clone this repo into your extensions folder:
 
 After installing, you can locate the new parameter "Negative Prompt Weight" in the extentions area of txt2img and img2img tabs. 
 
+## Usage
+
+It doesn't work with DDIM, PLMS and UniPC samplers, because of the way they are implemented in the webui.
 
 ## More Comparisons and Stuff
 
