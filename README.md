@@ -41,7 +41,7 @@ Or manually clone this repo into your extensions folder:
 
 After installing, you can locate the new parameter "Negative Prompt Weight" in the extentions area of txt2img and img2img tabs. 
 
-## Usage
+## Limitations
 
 It doesn't work with DDIM, PLMS and UniPC samplers, because of the way they are implemented in the webui.
 
