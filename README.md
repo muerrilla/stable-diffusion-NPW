@@ -43,7 +43,7 @@ After installing, you can locate the new parameter "Negative Prompt Weight" in t
 
 ## Limitations
 
-It doesn't work with DDIM, PLMS and UniPC samplers, because of the way they are implemented in the webui.
+Doesn't work with SDXL yet.
 
 ## More Comparisons and Stuff
 
