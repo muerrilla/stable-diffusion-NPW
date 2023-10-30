@@ -23,7 +23,7 @@ class Script(scripts.Script):
                 with gr.Column(scale=1, min_width=120):
                     with gr.Row():
                         weight_input = gr.Number(value=1.00, precision=4, label="Negative Prompt Weight", show_label=False, elem_id="npw-number")   
-                        reset_but = gr.Button(value='✕', elem_id='npw-x').style(full_width=False, size='sm')               
+                        reset_but = gr.Button(value='✕', elem_id='npw-x', size='sm')        
 
             js = """(v) => {
               ['#tab_txt2img #npw-x', '#tab_img2img #npw-x'].forEach((selector, index) => {
