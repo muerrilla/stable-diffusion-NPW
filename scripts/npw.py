@@ -125,4 +125,4 @@ def xyz_support():
 try:
     xyz_support()
 except Exception as e:
-    print(f'Error trying to add XYZ plot options for Latentshop', e)
+    print(f'Error trying to add XYZ plot options for NPW', e)
