@@ -14,6 +14,7 @@
   min-height: fit-content;
   font-weight: var(--button-large-text-weight);
   border-radius: 0.5em;
+  border-width: 1px;
 }
 
 #npw .gradio-row {
