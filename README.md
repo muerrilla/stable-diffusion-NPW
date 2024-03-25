@@ -39,11 +39,7 @@ Or manually clone this repo into your extensions folder:
 
 ![Screenshot of the slider provided by the extension in UI](/assets/screenshot.png "Does what it says on the box.")
 
-After installing, you can locate the new parameter "Negative Prompt Weight" in the extentions area of txt2img and img2img tabs. 
-
-## Limitations
-
-Doesn't work with SDXL yet.
+After installing, you can find the new parameter "Negative Prompt Weight" in the extentions area of txt2img and img2img tabs. 
 
 ## More Comparisons and Stuff
 
